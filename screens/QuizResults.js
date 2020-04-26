@@ -2,13 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import styled from 'styled-components/native';
-import {View, Text} from 'react-native';
 import {resetQuiz} from '../store/actions/quiz';
-
-import {
-  handleAndroidBackButton,
-  removeAndroidBackButtonHandler,
-} from '../modules/androidBackButton';
 import SecondaryButton from '../components/SecondaryButton';
 
 const QuizResultsView = styled.View`
@@ -70,21 +64,21 @@ const ActionView = styled.View`
 `;
 
 class QuizResults extends Component {
-  componentDidMount () {
-    const {deck: {title, id, cards}} = this.props;
-    const {navigation, resetQuiz} = this.props;
+  // componentDidMount () {
+  //   const {deck: {title, id, cards}} = this.props;
+  //   const {navigation, resetQuiz} = this.props;
 
-    handleAndroidBackButton (() => {
-      resetQuiz (cards.length);
-      navigation.navigate ('Quiz', {
-        id,
-        title,
-      });
-    });
-  }
-  componentWillUnmount () {
-    removeAndroidBackButtonHandler ();
-  }
+  //   handleAndroidBackButton (() => {
+  //     resetQuiz (cards.length);
+  //     navigation.navigate ('Quiz', {
+  //       id,
+  //       title,
+  //     });
+  //   });
+  // }
+  // componentWillUnmount () {
+  //   removeAndroidBackButtonHandler ();
+  // }
   render () {
     const {quiz: {score}, deck: {title, id, cards}} = this.props;
     const {navigation, resetQuiz} = this.props;

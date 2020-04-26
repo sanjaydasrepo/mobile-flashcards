@@ -56,11 +56,13 @@ class AddDeckScreen extends Component {
     const {addDeckHandler} = this.props;
     if( title ){
       this.setState({
-        title:'',
         isLoading:true
       })
       await addDeckHandler (title);
-
+      this.setState({
+        title:'',
+        isLoading:false
+      })
       this.props.navigation.navigate ('Details');
     }
    
