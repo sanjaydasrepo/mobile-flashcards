@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import styled from 'styled-components/native';
-import {Text} from 'react-native';
+import {Text  } from 'react-native';
 import {getCardsByDeck} from '../utils/helper';
 import {handleUpdateDeck} from '../store/actions/deck';
 import {resetQuiz, correctAnswer, wrongAnswer} from '../store/actions/quiz';

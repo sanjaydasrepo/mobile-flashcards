@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { ActivityIndicator } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addDeckHandler} from '../store/actions/deck';
@@ -40,6 +41,7 @@ const FormLabel = styled.Text`
 class AddDeckScreen extends Component {
   state = {
     title: '',
+    isLoading:false
   };
 
   handleChange = (name, value) => {
@@ -50,11 +52,13 @@ class AddDeckScreen extends Component {
 
   handleSave = async () => {
     const {title} = this.state;
-    this.setState({
-      title:''
-    })
+    
     const {addDeckHandler} = this.props;
     if( title ){
+      this.setState({
+        title:'',
+        isLoading:true
+      })
       await addDeckHandler (title);
 
       this.props.navigation.navigate ('Details');
@@ -66,15 +70,16 @@ class AddDeckScreen extends Component {
     return (
       <Container>
         <Card>
-          <HeaderText> Add deck </HeaderText>
+          <HeaderText> Add deck</HeaderText>
           <FormControl>
-            <FormLabel> Enter deck title </FormLabel>
+            <FormLabel> Enter deck title  </FormLabel>
             <StyledInput
             value={ this.state.title }
               onChangeText={text => this.handleChange ('title', text)}
             />
           </FormControl>
-          <PrimaryButton onPress={this.handleSave}> Save </PrimaryButton>
+           { this.state.isLoading && <ActivityIndicator size="large" color="#000" /> }
+          <PrimaryButton onPress={this.handleSave}> Save itaa  </PrimaryButton>
         </Card>
       </Container>
     );

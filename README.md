@@ -10,7 +10,9 @@ This app allows users to study collections of flashcards. The app will allow use
 To start the project:
 
 * install all project dependencies with `yarn install` or `npm install`
-* start the development server with `yarn start`
+* start the development server with `yarn start` or `expo start`
+* Install expo app in your phone or emulator and scan the code produced by expo .
+
 
 The project uses `expo` to initialize the project.For more info 
 https://docs.expo.io/get-started/installation/

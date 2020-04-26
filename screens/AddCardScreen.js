@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {ActivityIndicator} from 'react-native';
 import {handleAddCard} from '../store/actions/card';
 import styled from 'styled-components/native';
 import PrimaryButton from '../components/PrimaryButton';
@@ -39,6 +40,7 @@ class AddCardScreen extends Component {
   state = {
     question: '',
     answer: '',
+    isLoading: false,
   };
 
   handleChange = (name, value) => {
@@ -50,13 +52,16 @@ class AddCardScreen extends Component {
 
   handleSave = async () => {
     const {question, answer} = this.state;
-    const { id} = this.props.deck;
+    const {id} = this.props.deck;
 
-    const deckId = id ;
+    const deckId = id;
 
     const {handleAddCard} = this.props;
 
     if (question && answer) {
+      this.setState ({
+        isLoading: true,
+      });
       const card = {
         question,
         answer,
@@ -87,7 +92,8 @@ class AddCardScreen extends Component {
               onChangeText={text => this.handleChange ('answer', text)}
             />
           </FormControl>
-
+          {this.state.isLoading &&
+            <ActivityIndicator size="large" color="#000" />}
           <PrimaryButton onPress={this.handleSave}> Save </PrimaryButton>
         </Card>
       </Container>
@@ -99,10 +105,10 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators ({handleAddCard}, dispatch);
 };
 
-const mapStateToProps = ({cards,decks,currentDeck}) => {
+const mapStateToProps = ({cards, decks, currentDeck}) => {
   return {
     cards,
-    deck: decks && decks[ currentDeck ]
+    deck: decks && decks[currentDeck],
   };
 };
 export default connect (mapStateToProps, mapDispatchToProps) (AddCardScreen);
