@@ -128,7 +128,7 @@ class QuizScreen extends Component {
           </CardQuestionView>
           <CardQuestionAction>
             <SecondaryButton onPress={this.toggleAnswerView.bind (this)}>
-              {viewAnswer ? `View question` : `View Answer`}
+              {viewAnswer ? `Show question` : `Show Answer`}
             </SecondaryButton>
           </CardQuestionAction>
           <CardQuestionAction>
@@ -137,7 +137,7 @@ class QuizScreen extends Component {
                 Correct
               </SecondaryVariantButton>
               <SecondaryVariantButton onPress={() => this.handleSubmit ('wrong')}>
-                Wrong
+                Incorrect
               </SecondaryVariantButton>
             </Fragment>
 

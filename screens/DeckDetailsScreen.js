@@ -54,7 +54,7 @@ class DeckDetailsScreen extends Component {
             navigation.navigate ('Quiz');
           }}
         >
-          Start quiz
+          Start a Quiz
         </PrimaryButton>
       </Container>
     );

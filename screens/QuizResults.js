@@ -115,12 +115,12 @@ class QuizResults extends Component {
               });
             }}
           >
-            Retake quiz
+            Restart Quiz
           </SecondaryButton>
           <SecondaryButton
             onPress={() => navigation.navigate ('Details', {id, title})}
           >
-            View deck
+            Back to Deck
           </SecondaryButton>
 
         </ActionView>

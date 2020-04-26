@@ -81,7 +81,7 @@ class AddDeckScreen extends Component {
             />
           </FormControl>
            { this.state.isLoading && <ActivityIndicator size="large" color="#000" /> }
-          <PrimaryButton onPress={this.handleSave}> Save itaa  </PrimaryButton>
+          <PrimaryButton onPress={this.handleSave}> Create deck  </PrimaryButton>
         </Card>
       </Container>
     );
